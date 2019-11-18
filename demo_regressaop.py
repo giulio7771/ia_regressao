@@ -14,10 +14,15 @@ def app():
         x.append(data[i][0])
         y.append(data[i][1])
 
-    z = np.polyfit(x, y, 5)
-    p = np.poly1d(z)
+    p1 = np.polyfit(x, y, 1)
+    p2 = np.polyfit(x, y, 2)
+    p3 = np.polyfit(x, y, 3)
+    p8 = np.polyfit(x, y, 8)
     plt.scatter(x, y)
-    plt.plot(p)
+    plt.plot(x, np.polyval(p1, x), 'r-')
+    plt.plot(x, np.polyval(p2, x), 'g-')
+    plt.plot(x, np.polyval(p3, x), 'b-')
+    plt.plot(x, np.polyval(p8, x), 'y-')
     plt.show()
 
 app()
