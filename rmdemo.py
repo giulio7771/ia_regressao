@@ -55,14 +55,14 @@ def app():
         y.append(data[i][2])
         X.append([1, data[i][0], data[i][1]])
     y_ = regmultipla(X, y)
-    
+
     tamanho_casa = []
     n_quartos = []
-    preco = []
+    preco_ = []
     for i in range(len(X)):
         tamanho_casa.append(X[i][1])
         n_quartos.append(X[i][2])
-        preco.append(y_[i])
+        preco_.append(y_[i])
     
     
     cor_tamanho = correlacao(tamanho_casa, y)
@@ -79,11 +79,22 @@ def app():
     #    n_quartos.append(X[i][2])
     #ax.plot_wireframe(tamanho_casa, n_quartos, y_, rstride=15, cstride=15)
     
-        #ax.plot3D(tamanho_casa, n_quartos, preco, 'gray')
-    ax.plot3D(tamanho_casa, n_quartos, preco, 'gray')
+        #ax.plot3D(tamanho_casa, n_quartos, preco_, 'gray')
+    plt.xlabel("tamanho")
+    plt.ylabel("quartos")
+    ax.set_zlabel("preco")
+    ax.scatter(tamanho_casa, n_quartos, y, 'blue')
+    ax.plot3D(tamanho_casa, n_quartos, preco_, 'gray')
     
     # Exibindo o gráfico criado
     plt.show()
+
+    #teste 1650m² e  3 quartos
+    test = [1, 1650,  3]
+    test_y = np.dot(test, B)
+    print("teste 1650m² e  3 quartos")
+    print(test_y)
+
     
 
 
